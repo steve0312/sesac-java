@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="card" style="width: 18rem">
+      <img id="card-img" />
+      <div id="card-body">
+        <h5 id="card-title"></h5>
+        <h6 id="card-subtitle"></h6>
+        <p id="card-text"></p>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // 카드 요소 선택 및 클래스 추가
+      const card = document.querySelector('#card');
+      card.classList.add('card'); //  'card' 클래스 추가
+
+      const cardImg = document.querySelector('#card-img');
+      cardImg.src = 'https://placehold.co/600x400'; // 이미지 URL 추가
+      cardImg.classList.add('card-img-top'); // 클래스 추가
+
+      const cardBody = document.querySelector('#card-body');
+      cardBody.classList.add('card-body'); // 클래스 추가
+
+      const cardTitle = document.querySelector('#card-title');
+      cardTitle.textContent = '카드 타이틀'; //  텍스트 설정
+      cardTitle.classList.add('card-title'); // 클래스 추가
+
+      const cardSubtitle = document.querySelector('#card-subtitle');
+      cardSubtitle.textContent = '카드 서브 타이틀'; // 텍스트 설정
+      cardSubtitle.classList.add(
+        'card-subtitle',
+        'mb-2',
+        'text-body-secondary'
+      ); // 클래스 추가
+
+      const cardText = document.querySelector('#card-text');
+      cardText.textContent = '카드 텍스트'; // 텍스트 설정
+      cardText.classList.add('card-text'); //  클래스 추가
+    </script>
+  </body>
+</html>
