@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a id="link" href="https://www.example.com">Example</a>
+
+    <script>
+      // a태그를 눌렀을 때 구글로 이동하고 싶다.
+      // => a태그의 href가 구글 주소여야 한다.
+
+      const googleURL = 'https://www.google.com';
+      const aTag = document.querySelector('#link');
+
+      aTag.setAttribute('href', googleURL);
+    </script>
+  </body>
+</html>
