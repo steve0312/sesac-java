@@ -1,0 +1,47 @@
+<!-- 
+이벤트 실습1. button을 클릭하면 원본 텍스트가 "텍스트가 바뀜"으로 변하도록 구현하시오
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- html 코드도 자유롭게 수정하세요! -->
+
+    <!-- button을 클릭하면 원본 텍스트가 "텍스트가 바뀜"으로 변하도록 구현하시오. -->
+    <div class="container" id="firstPrac">
+      <div id="firstText">바뀔 예정인 텍스트</div>
+      <button id="firstButton">클릭</button>
+    </div>
+    <script>
+      // 1. 버튼이 필요합니다.
+      // 2. 버튼을 클릭하면 => 실행하라
+      // 3. 실행해라 -
+      // 3.A 원본 텍스트를 변경해라
+      // 3.A.a 원본 텍스트를 선택 => 변경
+      // const firstButton = document.querySelector('#firstButton');
+      const firstButton = document.querySelector('#firstPrac > button');
+      // firstButton.addEventListener(트리거, 동작)
+      firstButton.addEventListener('click', () => {
+        const firstText = document.querySelector('#firstText');
+        firstText.textContent = '텍스트가 바뀜';
+      });
+    </script>
+  </body>
+</html>

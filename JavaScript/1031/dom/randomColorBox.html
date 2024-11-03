@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+    <div id="box"></div>
+
+    <script>
+      const boxChange = document.querySelector('#box');
+      boxChange.style.width = '100px';
+      boxChange.style.height = '100px';
+
+      // _.random 사용
+      const colorBox = [];
+      for (let index = 0; index < 3; index++) {
+        const color = _.random(0, 256);
+        colorBox.push(color);
+      }
+      // 구조 분해 할당
+      const [r, g, b] = colorBox;
+
+      boxChange.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    </script>
+  </body>
+</html>

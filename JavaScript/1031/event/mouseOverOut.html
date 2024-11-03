@@ -1,0 +1,43 @@
+<!-- 
+이벤트 실습5. 마우스를 올리면 배경색이 빨간색으로 변하고, 내리면 다시 검정색으로 변하는 기능을 구현하시오
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 마우스를 올리면 배경색이 빨간색으로 변하고, 내리면 다시 검정색으로 변하는 기능을 구현하시오. -->
+    <div class="container">
+      <div class="box"></div>
+    </div>
+    <script>
+      const box = document.querySelector('.box');
+      box.addEventListener('mouseover', (e) => {
+        const target = e.target;
+
+        target.style.backgroundColor = 'red';
+      });
+
+      box.addEventListener('mouseout', (e) => {
+        const target = e.target;
+        target.style.backgroundColor = 'black';
+      });
+    </script>
+  </body>
+</html>

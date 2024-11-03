@@ -1,0 +1,42 @@
+<!-- 
+이벤트 실습7. 색상을 입력하면 텍스트의 색이 변하는 기능을 구현하시오
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 색상을 입력하면 텍스트의 색이 변하는 기능을 구현하시오. -->
+
+    <div class="container">
+      <h1 id="text">what color am I</h1>
+      <input type="text" id="inputTag" />
+    </div>
+    <script>
+      const inputTag = document.querySelector('#inputTag');
+      const textTag = document.querySelector('#text');
+
+      inputTag.addEventListener('input', (e) => {
+        const target = e.target;
+        const value = target.value;
+        textTag.style.color = value;
+      });
+    </script>
+  </body>
+</html>

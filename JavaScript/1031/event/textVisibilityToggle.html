@@ -1,0 +1,48 @@
+<!-- 
+이벤트 실습3. button을 클릭하면 텍스트가 보였다 안보였다 바뀌도록 구현하시오
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+      }
+
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- button을 클릭하면 텍스트가 보였다 안보였다 바뀌도록 구현하시오. -->
+    <!-- display : none 속성 및 class를 활용합니다. -->
+    <!-- visibility : hidden 속성 및 class를 활용합니다. -->
+    <div class="container" id="prac-3">
+      <button>클릭</button>
+      <div>보였다 안보였다</div>
+    </div>
+    <script>
+      // 1. 버튼을 클릭하면 무엇인가 일어난다.
+      // 2. 보였다가 안보였다가 한다.
+      // 2.a 보인 상태에서 클릭 => 안보여지고
+      // 2.b 안보이는 상태에서 클릭 => 보이게 된다.
+      // 3. 안보이는 기능을 담은 class를 만들어서 토글한다.
+      const button = document.querySelector('#prac-3 > button');
+      const text = document.querySelector('#prac-3 > div');
+      button.addEventListener('click', () => {
+        text.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
