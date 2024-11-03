@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <label for="text-input">텍스트 입력:</label>
+    <input type="text" id="text-input" />
+    <div class="output">
+      <p>input 이벤트 : <span id="input-output"></span></p>
+      <p>change 이벤트 : <span id="change-output"></span></p>
+    </div>
+
+    <script>
+      const textInput = document.querySelector('#text-input');
+      const inputOutput = document.querySelector('#input-output');
+      const changeOutput = document.querySelector('#change-output');
+
+      // input 이벤트: 입력 시마다 발생
+      textInput.addEventListener('input', () => {
+        // form 태그의 예시라서 value를 이렇게 받아올 수 있고 그 외의 태그에서는 event.taget / target.value 를 통해서 받아와야 한다.
+        inputOutput.textContent = textInput.value;
+      });
+
+      // change 이벤트: 입력이 완료된 후(포커스가 벗어나면) 발생
+      textInput.addEventListener('change', () => {
+        changeOutput.textContent = textInput.value;
+      });
+    </script>
+  </body>
+</html>

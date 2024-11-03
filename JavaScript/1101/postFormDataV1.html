@@ -1,0 +1,54 @@
+<!-- 
+실습1. title, body를 입력하고 제출을 누르면 그 내용을 화면에 띄워준다. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="https://jsonplaceholder.typicode.com/posts" method="post">
+      <div>title</div>
+      <input type="text" name="title" />
+      <div>body</div>
+      <input type="text" name="body" />
+      <input type="submit" />
+    </form>
+    <script>
+      // 폼에서 이벤트를 진행할 거라서 querySelector 설정
+      const form = document.querySelector('form');
+      // 폼 제출 이벤트 리스너 설정
+      form.addEventListener('submit', (e) => {
+        // 위에서 form 태그의 action 속성으로 생성된 링크를 띄우게 설정했는데 이것을 원치 않는 경우, preventDefault()를 통해 중지시킴
+        e.preventDefault();
+
+        //title 부분에 입력한 값을 받아오기 위해 querySelector 설정
+        // 'input[name=title]' 이라고 표현한 것은 따로 id를 추가하지 않고 사용하기 위함
+        const title = document.querySelector('input[name=title]').value;
+        // body 부분에 입력한 값을 받아오기 위해 querySelector 설정
+        const body = document.querySelector('input[name=body]').value;
+        console.log(title, body);
+
+        // 해당 URL에 데이터를 전송해서 새로운 리소스 생성
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          // JSON.stringify : 객체를 JSON으로 변환
+          body: JSON.stringify({
+            title: title,
+            body: body,
+            userId: 1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json))
+          .catch((error) => console.error(error));
+      });
+    </script>
+  </body>
+</html>
