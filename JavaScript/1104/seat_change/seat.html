@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 50px;
+        border: solid 1px;
+      }
+
+      .flex {
+        display: flex;
+      }
+    </style>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+"></script>
+  </head>
+  <body>
+    <main class="flex">
+      <section>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </section>
+
+      <section>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </section>
+
+      <section>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </section>
+
+      <section>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </section>
+    </main>
+
+    <script>
+      const arr = [
+        '가경식',
+        '강경훈',
+        '김동훈',
+        '김상호',
+        '노영재',
+        '박재훈',
+        '박종빈',
+        '박하은',
+        '서승덕',
+        '오예진',
+        '원성준',
+        '육슬찬',
+        '윤대정',
+        '이상호',
+        '이재현',
+        '이태영',
+        '임수빈',
+        '임유진',
+        '정명훈',
+        '정승연',
+        '정여원',
+        '최원호',
+        '차윤선',
+      ];
+
+      const arrs = _.shuffle(arr);
+      const divs = document.querySelectorAll('.box');
+      for (let i = 0; i < arr.length; i++) {
+        divs[i + 1].textContent = arrs[i];
+      }
+    </script>
+  </body>
+</html>
