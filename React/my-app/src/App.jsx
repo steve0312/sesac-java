@@ -12,7 +12,8 @@
 // import List2 from './List2';
 // import NameList from './nameList';
 // import UserData from './UserData';
-import Products from './Products';
+// import Products from './Products';
+import DogPage from './DogPage';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
       {/* <List2></List2> */}
       {/* <NameList></NameList> */}
       {/* <UserData></UserData> */}
-      <Products></Products>
+      {/* <Products></Products> */}
+      <DogPage></DogPage>
     </>
   );
 }
