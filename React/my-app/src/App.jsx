@@ -11,7 +11,8 @@
 // import List1 from './List1';
 // import List2 from './List2';
 // import NameList from './nameList';
-import UserData from './UserData';
+// import UserData from './UserData';
+import Products from './Products';
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
       {/* <List1></List1> */}
       {/* <List2></List2> */}
       {/* <NameList></NameList> */}
-      <UserData></UserData>
+      {/* <UserData></UserData> */}
+      <Products></Products>
     </>
   );
 }
