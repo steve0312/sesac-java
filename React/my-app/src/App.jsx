@@ -8,7 +8,8 @@
 // import Login from './Login';
 // import Page from './Page';
 // import OtherPage from './OtherPage';
-import List1 from './List1';
+// import List1 from './List1';
+import List2 from './List2';
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
       {/* <Login></Login> */}
       {/* <Page></Page> */}
       {/* <OtherPage></OtherPage> */}
-      <List1></List1>
+      {/* <List1></List1> */}
+      <List2></List2>
     </>
   );
 }
