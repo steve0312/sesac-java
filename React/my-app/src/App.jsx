@@ -5,7 +5,8 @@
 // import Card from './Card';
 // import Button from './Button';
 // import ButtonChildren from './ButtonChildren';
-import Login from './Login';
+// import Login from './Login';
+import Page from './Page';
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       <ButtonChildren backgroundColor="red">취소</ButtonChildren>
       <ButtonChildren backgroundColor="gray">보류</ButtonChildren>
       <ButtonChildren backgroundColor="pink">1억년</ButtonChildren> */}
-      <Login></Login>
+      {/* <Login></Login> */}
+      <Page></Page>
     </>
   );
 }
