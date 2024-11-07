@@ -7,7 +7,8 @@
 // import ButtonChildren from './ButtonChildren';
 // import Login from './Login';
 // import Page from './Page';
-import OtherPage from './OtherPage';
+// import OtherPage from './OtherPage';
+import List1 from './List1';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
       <ButtonChildren backgroundColor="pink">1억년</ButtonChildren> */}
       {/* <Login></Login> */}
       {/* <Page></Page> */}
-      <OtherPage></OtherPage>
+      {/* <OtherPage></OtherPage> */}
+      <List1></List1>
     </>
   );
 }
