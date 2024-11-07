@@ -13,7 +13,8 @@
 // import NameList from './nameList';
 // import UserData from './UserData';
 // import Products from './Products';
-import DogPage from './DogPage';
+// import DogPage from './DogPage';
+import ButtonContainer from './ButtonContainer';
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
       {/* <NameList></NameList> */}
       {/* <UserData></UserData> */}
       {/* <Products></Products> */}
-      <DogPage></DogPage>
+      {/* <DogPage></DogPage> */}
+      <ButtonContainer></ButtonContainer>
     </>
   );
 }
