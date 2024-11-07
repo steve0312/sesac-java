@@ -9,7 +9,8 @@
 // import Page from './Page';
 // import OtherPage from './OtherPage';
 // import List1 from './List1';
-import List2 from './List2';
+// import List2 from './List2';
+import NameList from './nameList';
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
       {/* <Page></Page> */}
       {/* <OtherPage></OtherPage> */}
       {/* <List1></List1> */}
-      <List2></List2>
+      {/* <List2></List2> */}
+      <NameList></NameList>
     </>
   );
 }
