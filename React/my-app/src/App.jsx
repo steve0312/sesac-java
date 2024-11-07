@@ -3,8 +3,9 @@
 // import Component from './Component';
 // import Welcome from './Welcome';
 // import Card from './Card';
-import Button from './Button';
-import ButtonChildren from './ButtonChildren';
+// import Button from './Button';
+// import ButtonChildren from './ButtonChildren';
+import Login from './Login';
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
       <Button backgroundColor="red" text="취소"></Button>
       <Button backgroundColor="gray" text="보류"></Button>
       <Button backgroundColor="pink" text="1억년"></Button> */}
-      <ButtonChildren backgroundColor="blue">확인</ButtonChildren>
+      {/* <ButtonChildren backgroundColor="blue">확인</ButtonChildren>
       <ButtonChildren backgroundColor="red">취소</ButtonChildren>
       <ButtonChildren backgroundColor="gray">보류</ButtonChildren>
-      <ButtonChildren backgroundColor="pink">1억년</ButtonChildren>
+      <ButtonChildren backgroundColor="pink">1억년</ButtonChildren> */}
+      <Login></Login>
     </>
   );
 }
