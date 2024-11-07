@@ -6,7 +6,8 @@
 // import Button from './Button';
 // import ButtonChildren from './ButtonChildren';
 // import Login from './Login';
-import Page from './Page';
+// import Page from './Page';
+import OtherPage from './OtherPage';
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
       <ButtonChildren backgroundColor="gray">보류</ButtonChildren>
       <ButtonChildren backgroundColor="pink">1억년</ButtonChildren> */}
       {/* <Login></Login> */}
-      <Page></Page>
+      {/* <Page></Page> */}
+      <OtherPage></OtherPage>
     </>
   );
 }
