@@ -14,7 +14,8 @@
 // import UserData from './UserData';
 // import Products from './Products';
 // import DogPage from './DogPage';
-import ButtonContainer from './ButtonContainer';
+// import ButtonContainer from './ButtonContainer';
+import Menu from './Menu';
 
 function App() {
   return (
@@ -41,7 +42,8 @@ function App() {
       {/* <UserData></UserData> */}
       {/* <Products></Products> */}
       {/* <DogPage></DogPage> */}
-      <ButtonContainer></ButtonContainer>
+      {/* <ButtonContainer></ButtonContainer> */}
+      <Menu></Menu>
     </>
   );
 }
