@@ -15,7 +15,11 @@
 // import Products from './Products';
 // import DogPage from './DogPage';
 // import ButtonContainer from './ButtonContainer';
-import Menu from './Menu';
+// import Menu from './Menu';
+import ButtonClickAlert from './ButtonClickAlert';
+import BoxColorChange from './BoxColorChange';
+import InputText from './InputText';
+import Button4ClickAlert from './Button4ClickAlert';
 
 function App() {
   return (
@@ -43,7 +47,34 @@ function App() {
       {/* <Products></Products> */}
       {/* <DogPage></DogPage> */}
       {/* <ButtonContainer></ButtonContainer> */}
-      <Menu></Menu>
+      {/* <Menu></Menu> */}
+      <ButtonClickAlert></ButtonClickAlert>
+      <BoxColorChange></BoxColorChange>
+      <InputText></InputText>
+      <Button4ClickAlert
+        onButtonClick={() => alert('확인 완료!')}
+        backgroundColor="blue"
+      >
+        확인
+      </Button4ClickAlert>
+      <Button4ClickAlert
+        onButtonClick={() => alert('취소 완료!')}
+        backgroundColor="tomato"
+      >
+        취소
+      </Button4ClickAlert>
+      <Button4ClickAlert
+        onButtonClick={() => alert('보류 완료!')}
+        backgroundColor="gray"
+      >
+        보류
+      </Button4ClickAlert>
+      <Button4ClickAlert
+        onButtonClick={() => alert('1억원을 얻었습니다!')}
+        backgroundColor="violet"
+      >
+        1억년
+      </Button4ClickAlert>
     </>
   );
 }
