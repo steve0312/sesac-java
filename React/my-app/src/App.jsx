@@ -22,6 +22,7 @@
 // import Button4ClickAlert from './Button4ClickAlert';
 import Counter from './Counter';
 import CounterButton from './CounterButton';
+import InputTextShow from './InputTextShow';
 
 function App() {
   return (
@@ -81,6 +82,7 @@ function App() {
 
       <Counter></Counter>
       <CounterButton></CounterButton>
+      <InputTextShow></InputTextShow>
     </>
   );
 }
