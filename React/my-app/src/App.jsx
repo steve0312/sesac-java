@@ -16,10 +16,12 @@
 // import DogPage from './DogPage';
 // import ButtonContainer from './ButtonContainer';
 // import Menu from './Menu';
-import ButtonClickAlert from './ButtonClickAlert';
-import BoxColorChange from './BoxColorChange';
-import InputText from './InputText';
-import Button4ClickAlert from './Button4ClickAlert';
+// import ButtonClickAlert from './ButtonClickAlert';
+// import BoxColorChange from './BoxColorChange';
+// import InputText from './InputText';
+// import Button4ClickAlert from './Button4ClickAlert';
+import Counter from './Counter';
+import CounterButton from './CounterButton';
 
 function App() {
   return (
@@ -48,7 +50,8 @@ function App() {
       {/* <DogPage></DogPage> */}
       {/* <ButtonContainer></ButtonContainer> */}
       {/* <Menu></Menu> */}
-      <ButtonClickAlert></ButtonClickAlert>
+
+      {/* <ButtonClickAlert></ButtonClickAlert>
       <BoxColorChange></BoxColorChange>
       <InputText></InputText>
       <Button4ClickAlert
@@ -74,7 +77,10 @@ function App() {
         backgroundColor="violet"
       >
         1억년
-      </Button4ClickAlert>
+      </Button4ClickAlert> */}
+
+      <Counter></Counter>
+      <CounterButton></CounterButton>
     </>
   );
 }
