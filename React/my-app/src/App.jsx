@@ -24,6 +24,8 @@ import Counter from './Counter';
 import CounterButton from './CounterButton';
 import InputTextShow from './InputTextShow';
 import InputColorShow from './InputColorShow';
+import GoodChange from './GoodChange';
+import GoodChangeColor from './GoodChangeColor';
 
 function App() {
   return (
@@ -85,6 +87,8 @@ function App() {
       <CounterButton></CounterButton>
       <InputTextShow></InputTextShow>
       <InputColorShow></InputColorShow>
+      <GoodChange></GoodChange>
+      <GoodChangeColor></GoodChangeColor>
     </>
   );
 }
