@@ -23,6 +23,7 @@
 import Counter from './Counter';
 import CounterButton from './CounterButton';
 import InputTextShow from './InputTextShow';
+import InputColorShow from './InputColorShow';
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
       <Counter></Counter>
       <CounterButton></CounterButton>
       <InputTextShow></InputTextShow>
+      <InputColorShow></InputColorShow>
     </>
   );
 }
