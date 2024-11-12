@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 export default function NovelLayout() {
   return (
     <>
-      <h2>소설</h2>
+      <h2 className="neverTextColor">소설</h2>
       <NovelHeader></NovelHeader>
       <Outlet></Outlet>
     </>

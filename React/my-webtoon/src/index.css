@@ -66,3 +66,45 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+.dotNone {
+  list-style: none;
+}
+
+.displays {
+  display: flex;
+}
+
+.spaceAround {
+  justify-content: space-around;
+}
+
+.borders {
+  border: 1px solid black;
+}
+
+.linkNone {
+  text-decoration: none;
+}
+
+.textColor {
+  color: black;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.neverTextColor {
+  color: #03c75a;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid silver;
+}
+
+.boxGap {
+  margin: 20px;
+}

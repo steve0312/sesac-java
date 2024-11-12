@@ -6,14 +6,18 @@ export default function NovelHeader() {
 
   return (
     <header>
-      <ul>
+      <ul className="dotNone displays spaceAround borders">
         <li>
-          <Link to="/">메인</Link>
+          <Link to="/" className="linkNone textColor">
+            메인
+          </Link>
         </li>
         {genres.map((genre) => {
           return (
             <li key={genre}>
-              <Link to={`/novel/${genre}`}>{genre}</Link>
+              <Link to={`/novel/${genre}`} className="linkNone textColor">
+                {genre}
+              </Link>
             </li>
           );
         })}

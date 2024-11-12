@@ -5,14 +5,18 @@ export default function WebtoonHeader() {
   const days = ['월', '화', '수', '목', '금', '토', '일'];
   return (
     <header>
-      <ul>
+      <ul className="dotNone displays spaceAround borders">
         <li>
-          <Link to="/">메인</Link>
+          <Link to="/" className="linkNone textColor">
+            메인
+          </Link>
         </li>
         {days.map((day) => {
           return (
             <li key={day}>
-              <Link to={`/webtoon/${day}`}>{day}</Link>
+              <Link to={`/webtoon/${day}`} className="linkNone textColor">
+                {day}
+              </Link>
             </li>
           );
         })}

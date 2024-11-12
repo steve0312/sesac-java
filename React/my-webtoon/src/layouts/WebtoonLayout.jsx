@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 export default function WebtoonLayout() {
   return (
     <>
-      <h2>웹툰</h2>
+      <h2 className="neverTextColor">웹툰</h2>
       <WebtoonHeader></WebtoonHeader>
       <Outlet></Outlet>
     </>
