@@ -12,7 +12,7 @@ export default function NovelHeader() {
         </li>
         {genres.map((genre) => {
           return (
-            <li>
+            <li key={genre}>
               <Link to={`/novel/${genre}`}>{genre}</Link>
             </li>
           );

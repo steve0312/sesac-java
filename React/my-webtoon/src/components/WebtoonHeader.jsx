@@ -11,7 +11,7 @@ export default function WebtoonHeader() {
         </li>
         {days.map((day) => {
           return (
-            <li>
+            <li key={day}>
               <Link to={`/webtoon/${day}`}>{day}</Link>
             </li>
           );
