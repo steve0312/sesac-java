@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import WebtoonLayout from '../layouts/WebtoonLayout';
 import NovelLayout from '../layouts/NovelLayout';
 import RootLayout from '../layouts/RootLayout';
+import WebtoonCategory from '../pages/WebtoonCategory';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,12 @@ const router = createBrowserRouter([
       {
         path: '/webtoon',
         element: <WebtoonLayout />,
+        children: [
+          {
+            path: '/webtoon/:dayId',
+            element: <WebtoonCategory />,
+          },
+        ],
       },
       {
         path: '/novel',
