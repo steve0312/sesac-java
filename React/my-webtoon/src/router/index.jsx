@@ -4,6 +4,7 @@ import WebtoonLayout from '../layouts/WebtoonLayout';
 import NovelLayout from '../layouts/NovelLayout';
 import RootLayout from '../layouts/RootLayout';
 import WebtoonCategory from '../pages/WebtoonCategory';
+import NovelCategory from '../pages/NovelCategory';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ const router = createBrowserRouter([
       {
         path: '/novel',
         element: <NovelLayout />,
+        children: [
+          {
+            path: '/novel/:genreId',
+            element: <NovelCategory />,
+          },
+        ],
       },
     ],
   },
