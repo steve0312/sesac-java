@@ -25,14 +25,6 @@ function PostList() {
 
   return (
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/posts">posts</Link>
-        </li>
-      </ul>
       <h2>Posts</h2>
       <ul>
         {posts.map((post) => (
