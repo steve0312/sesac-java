@@ -1,24 +1,14 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import RootHeader from '../components/RootHeader';
+import Footer from '../components/Footer';
 
 export default function RootLayout() {
   return (
     <>
-      <header>
-        <ul>
-          {/* <li>
-          <Link to="/">홈</Link>
-        </li> */}
-          <li>
-            <Link to="/webtoon">웹툰</Link>
-          </li>
-          <li>
-            <Link to="/novel">소설</Link>
-          </li>
-        </ul>
-      </header>
+      <RootHeader></RootHeader>
       <Outlet></Outlet>
-      <footer>footer</footer>
+      <Footer></Footer>
     </>
   );
 }
