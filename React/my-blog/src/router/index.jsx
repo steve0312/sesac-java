@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
 import PostList from '../pages/PostList';
 import RootLayout from '../RootLayout';
+import PostDetail from '../pages/PostDetail';
 
 // createBrowserRouter() 를 통해 URL 경로와 컴포넌트를 매핑시킬 수 있다.
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: '/posts',
         element: <PostList />,
+      },
+      {
+        path: '/posts/:postId',
+        element: <PostDetail />,
       },
     ],
   },

@@ -29,11 +29,9 @@ function PostList() {
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <h3>{post.title}</h3>
-            {/* <Link to={`/posts/${post.id}`} state={{ post: post }}>
-              개별 이동
-            </Link> */}
-            <p>{post.content}</p>
+            <Link to={`/posts/${post.id}`}>
+              <h3>{post.title}</h3>
+            </Link>
           </li>
         ))}
       </ul>
