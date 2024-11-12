@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function PostList() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -29,8 +30,14 @@ function PostList() {
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <Link to={`/posts/${post.id}`}>
-              <h3>{post.title}</h3>
+            <Link to={`/posts/${post.id}`} state={{ post }}>
+              <h3
+                onClick={() => {
+                  navigate(`/posts/${post.id}`, { state: { post } });
+                }}
+              >
+                {post.title}
+              </h3>
             </Link>
           </li>
         ))}
