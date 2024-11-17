@@ -9,7 +9,7 @@ export default function RootLayout() {
       <Header></Header>
       {/* 부모 라우트가 자식 라우트를 렌더링할 위치를 지정하기 위해 Outlet 설정 */}
       <Outlet></Outlet>
-      <footer>푸터</footer>
+      <footer>footer</footer>
     </>
   );
 }

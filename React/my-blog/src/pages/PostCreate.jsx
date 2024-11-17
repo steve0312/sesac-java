@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPost } from '../store/slices/postsSlice';
 import { useNavigate } from 'react-router-dom';
 
 export default function PostCreate() {
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({ title: '', content: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // 게시글 생성 페이지에서 로그아웃 상태로 전환 시 홈 화면으로 이동
+  // 로그아웃 상태에서 URL을 통해서 직접 게시글 생성 페이지로 이동하려고 해도 홈 화면으로 이동
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/');
+    }
+  }, [isLoggedIn]);
 
   function handleChange(e) {
     const inputValue = e.target.value;
