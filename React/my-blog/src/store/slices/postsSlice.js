@@ -27,7 +27,13 @@ const postsSlice = createSlice({
   // 초기값
   initialState,
   // setter
-  reducers: {},
+  reducers: {
+    addPost: (state, action) => {
+      // 리스트에 새로운 데이터를 push
+      state.push(action.payload);
+    },
+  },
 });
 
+export const { addPost } = postsSlice.actions;
 export default postsSlice.reducer;
