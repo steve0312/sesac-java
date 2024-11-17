@@ -11,6 +11,9 @@ export default function Header() {
         <li>
           <Link to="/posts">게시글로</Link>
         </li>
+        <li>
+          <Link to="/posts/create">게시글 생성</Link>
+        </li>
       </ul>
     </header>
   );

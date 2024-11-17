@@ -4,6 +4,7 @@ import PostList from '../pages/PostList';
 import RootLayout from '../RootLayout';
 import PostDetail from '../pages/PostDetail';
 import NotFound from '../pages/NotFound';
+import PostCreate from '../pages/PostCreate';
 
 // createBrowserRouter() 를 통해 URL 경로와 컴포넌트를 매핑시킬 수 있다.
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/posts',
         element: <PostList />,
+      },
+      {
+        path: '/posts/create',
+        element: <PostCreate />,
       },
       {
         path: '/posts/:postId',
