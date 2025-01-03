@@ -5,6 +5,7 @@ import com.example.demo.prac_0102.myjpasitev4.dto.PostListResponseDto;
 import com.example.demo.prac_0102.myjpasitev4.dto.PostResponseDto;
 import com.example.demo.prac_0102.myjpasitev4.dto.PostUpdateRequestDto;
 import com.example.demo.prac_0102.myjpasitev4.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class PostControllerV4 {
     // Post method / url / data
     // 클라이언트가 요청한 데이터를 RequestDTO를 통해 서버로 전달
     @PostMapping
-    public ResponseEntity<ApiResponse<PostResponseDto>> createPost(@RequestBody PostCreateRequestDto reqeustDto){
+    public ResponseEntity<ApiResponse<PostResponseDto>> createPost(@Valid @RequestBody PostCreateRequestDto reqeustDto){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(
