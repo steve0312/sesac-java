@@ -21,12 +21,13 @@ public class PostControllerV4 {
     private final PostServiceV4 postServiceV4;
 
     // Exception Handling
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ApiResponse<Void>> handleResourceNotFound(ResourceNotFoundException ex) {
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(ApiResponse.error("resoure not found", "NOT_FOUND"));
-    }
+//    @ExceptionHandler(ResourceNotFoundException.class)
+//    public ResponseEntity<ApiResponse<Void>> handleResourceNotFound(ResourceNotFoundException ex) {
+//        return ResponseEntity
+//                .status(HttpStatus.NOT_FOUND)
+//                .body(ApiResponse.error("resoure not found", "NOT_FOUND"));
+//                // .body(ApiResponse.error(ex.getMessage(), "NOT_FOUND"));
+//    }
 
 
     // Post method / url / data
