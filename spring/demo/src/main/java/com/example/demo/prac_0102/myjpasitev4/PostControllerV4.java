@@ -4,6 +4,7 @@ import com.example.demo.prac_0102.myjpasitev4.dto.PostCreateRequestDto;
 import com.example.demo.prac_0102.myjpasitev4.dto.PostListResponseDto;
 import com.example.demo.prac_0102.myjpasitev4.dto.PostResponseDto;
 import com.example.demo.prac_0102.myjpasitev4.dto.PostUpdateRequestDto;
+import com.example.demo.prac_0102.myjpasitev4.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,15 @@ import java.util.List;
 public class PostControllerV4 {
     // PostService 필요
     private final PostServiceV4 postServiceV4;
+
+    // Exception Handling
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiResponse<Void>> handleResourceNotFound(ResourceNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(ApiResponse.error("resoure not found", "NOT_FOUND"));
+    }
+
 
     // Post method / url / data
     // 클라이언트가 요청한 데이터를 RequestDTO를 통해 서버로 전달
