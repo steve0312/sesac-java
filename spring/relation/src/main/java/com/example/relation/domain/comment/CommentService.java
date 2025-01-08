@@ -26,9 +26,23 @@ public class CommentService {
                 .orElseThrow(() -> new ResourceNotFoundException());
 
         // 찾은 게시글에 새로운 댓글 생성
+        // Comment <- Post 이므로 연관관계 편의 메서드를 설정하게 됨
         Comment comment = requestDto.toEntity(post);
 
         return CommentResponseDto.from(commentRepository.save(comment));
     }
 
+
+    // Update
+    @Transactional
+    public CommentResponseDto updateComment(Long postId, Long commentId, CommentRequestDto requestDto) {
+        // 영속 상태가 됨
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        // Dirty Checking에 의해서 save 메서드를 사용하지 않아도 알아서 변경사항이 DB에 반영됨
+        comment.update(requestDto);
+
+        return CommentResponseDto.from(comment);
+    }
 }
