@@ -30,6 +30,8 @@ public class PostService {
                 .toList();
     }
 
+    // 방식 1
+    // 게시글에 정보 따로, 해당 게시글에 대한 댓글 목록을 따로 만들어 Dto로 합쳐 전달
     public PostWithCommentResponseDto readPostById(Long id){
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
 
@@ -37,6 +39,18 @@ public class PostService {
         List<Comment> comments = commentRepository.findByPostId(id);
 
         return PostWithCommentResponseDto.from(post, comments);
+    }
+
+    // 방식 2
+    // JOIN을 통한 Read
+    public PostWithCommentResponseDtoV2 readPostByIdV2(Long id) {
+        // post, comment를 한 번에 가져오고 싶다.
+        Post post = postRepository.findByIdWithComment(id)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        return PostWithCommentResponseDtoV2.from(post);
+
+        // dto로 변경해서 return한다.
     }
 
     @Transactional

@@ -45,6 +45,16 @@ public class PostController {
         );
     }
 
+    // JOIN을 통한 Read
+    @GetMapping("/v2/{id}")
+    public ResponseEntity<ApiResponse<PostWithCommentResponseDtoV2>> readPostByIdV2(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostByIdV2(id)
+                )
+        );
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<PostResponseDto>> updatePost(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto) {
         ApiResponse<PostResponseDto> response = ApiResponse.ok("게시글이 성공적으로 수정되었습니다", "UPDATED", postService.updatePost(id, requestDto));
