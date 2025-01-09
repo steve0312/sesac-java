@@ -47,10 +47,10 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     // 게시글을 댓글과 태그들과 함께 조회
     // Batch size를 통해 해결할 거라서 fetch 썼던 것을 지움
-    @Query("SELECT p FROM Post p " +
+    @Query("SELECT DISTINCT p FROM Post p " +
             "LEFT JOIN p.comments c " +
-            "LEFT JOIN p.postTags pt " +
-            "LEFT JOIN pt.tag " +
+            "LEFT JOIN FETCH p.postTags pt " +
+            "LEFT JOIN FETCH pt.tag " +
             "WHERE p.id = :id")
     Optional<Post> findByIdWithCommentAndTag(@Param("id") Long id);
 
