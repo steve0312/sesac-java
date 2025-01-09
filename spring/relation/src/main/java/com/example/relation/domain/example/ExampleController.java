@@ -45,4 +45,11 @@ public class ExampleController {
         List<Post> posts = postRepository.findAllWithCommentFetch();
         posts.stream().map(PostWithCommentResponseDtoV2::from).toList();
     }
+
+    // @EntityGraph 사용
+    @GetMapping("/nplus1/entity-graph")
+    public void LoadingExample5(){
+        List<Post> posts  =postRepository.findAllWithCommentEntityGraph();
+        posts.stream().map(PostWithCommentResponseDtoV2::from).toList();
+    }
 }

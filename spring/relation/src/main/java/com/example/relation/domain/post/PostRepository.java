@@ -1,5 +1,6 @@
 package com.example.relation.domain.post;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +20,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     // fetch join을 통한 N+1 문제 해결
     @Query("SELECT p FROM Post p LEFT JOIN FETCH  p.comments")
     List<Post> findAllWithCommentFetch();
+
+    // @EntityGraph 사용
+    @EntityGraph(attributePaths = {"comments"})
+    @Query("SELECT p FROM Post p")
+    List<Post> findAllWithCommentEntityGraph();
 }
