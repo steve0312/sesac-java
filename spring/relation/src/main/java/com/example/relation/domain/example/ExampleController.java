@@ -38,4 +38,11 @@ public class ExampleController {
         List<Post> posts  =postRepository.findAll();
         posts.stream().map(PostWithCommentResponseDtoV2::from).toList();
     }
+
+    // fetch join을 통한 N+1 문제 해결
+    @GetMapping("/nplus1/fetch")
+    public void LoadingExample4(){
+        List<Post> posts = postRepository.findAllWithCommentFetch();
+        posts.stream().map(PostWithCommentResponseDtoV2::from).toList();
+    }
 }
