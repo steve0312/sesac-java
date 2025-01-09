@@ -19,4 +19,12 @@ public class ExampleController {
         Post post = postRepository.findById(postId).orElseThrow();
         int commentSize = post.getComments().size();
     }
+
+    // fetch join
+    // 연관된 엔티티나 컬렉션을 한 번의 SQL로 함께 조회하는 방법
+    @GetMapping("/fetch/{postId}")
+    public void LoadingExample2(@PathVariable Long postId){
+        Post post = postRepository.findByIdWithCommentFetch(postId).orElseThrow();
+        int commentSize = post.getComments().size();
+    }
 }

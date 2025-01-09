@@ -10,4 +10,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     // JOIN을 통해 post id에 해당하는 Post 조회 (Post와 Comment 접근 가능)
     @Query("SELECT p FROM Post p LEFT JOIN p.comments WHERE p.id = :id")
     Optional<Post> findByIdWithComment(@Param("id") Long id);
+
+    // fetch join
+    @Query("SELECT p FROM Post p LEFT JOIN FETCH  p.comments WHERE p.id = :id")
+    Optional<Post> findByIdWithCommentFetch(@Param("id") Long id);
 }
