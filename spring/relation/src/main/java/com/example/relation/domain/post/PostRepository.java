@@ -52,4 +52,12 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "LEFT JOIN FETCH pt.tag " +
             "WHERE p.id = :id")
     Optional<Post> findByIdWithCommentAndTag(@Param("id") Long id);
+
+
+    // 게시글을 태그와 함께 조회
+    @Query("SELECT p FROM Post p " +
+            "LEFT JOIN FETCH p.postTags pt " +
+            "LEFT JOIN FETCH pt.tag " +
+            "WHERE p.id = :id")
+    Optional<Post> findByIdWithTag(@Param("id") Long id);
 }

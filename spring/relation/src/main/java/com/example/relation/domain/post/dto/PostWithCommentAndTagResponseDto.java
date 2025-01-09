@@ -1,5 +1,6 @@
 package com.example.relation.domain.post.dto;
 
+import com.example.relation.domain.comment.Comment;
 import com.example.relation.domain.comment.dto.CommentResponseDto;
 import com.example.relation.domain.post.entity.Post;
 import com.example.relation.domain.tag.dto.TagResponseDto;
@@ -21,14 +22,14 @@ public class PostWithCommentAndTagResponseDto {
     private final List<CommentResponseDto> comments;
     private final List<String> tags;
 
-    public static PostWithCommentAndTagResponseDto from(Post entity) {
+    public static PostWithCommentAndTagResponseDto from(Post entity, List<Comment> comments) {
         return PostWithCommentAndTagResponseDto.builder()
                 .id(entity.getId())
                 .title(entity.getTitle())
                 .content(entity.getContent())
                 .author(entity.getAuthor())
                 .comments(
-                        entity.getComments().stream()
+                        comments.stream()
                                 .map(CommentResponseDto::from)
                                 .toList()
                 )

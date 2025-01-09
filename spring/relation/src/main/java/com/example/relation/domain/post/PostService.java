@@ -132,9 +132,17 @@ public class PostService {
     // Read- 게시글을 댓글과 태그들과 함께 조회
     public PostWithCommentAndTagResponseDto readPostsByIdWithCommentAndTag(Long id) {
         // 댓글과 태그를 가진 게시글을 가져오자
-        Post post = postRepository.findByIdWithCommentAndTag(id)
+//        Post post = postRepository.findByIdWithCommentAndTag(id)
+//                .orElseThrow(() -> new ResourceNotFoundException());
+
+        // 태그를 가진 게시글 가져옴
+        Post postWithTag = postRepository.findByIdWithTag(id)
                 .orElseThrow(() -> new ResourceNotFoundException());
 
-        return PostWithCommentAndTagResponseDto.from(post);
+        // 게시글에 맞는 댓글 가져옴
+        List<Comment> comments = commentRepository.findByPostId(id);
+
+        // 하나의 ResponseDTO로 통합해서 반환
+        return PostWithCommentAndTagResponseDto.from(postWithTag, comments);
     }
 }
