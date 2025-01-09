@@ -3,6 +3,12 @@ package com.example.relation.domain.post;
 import com.example.relation.domain.comment.Comment;
 import com.example.relation.domain.comment.CommentRepository;
 import com.example.relation.domain.post.dto.*;
+import com.example.relation.domain.post.entity.Post;
+import com.example.relation.domain.post.entity.PostTag;
+import com.example.relation.domain.post.repository.PostTagRepository;
+import com.example.relation.domain.tag.Tag;
+import com.example.relation.domain.tag.TagRepository;
+import com.example.relation.domain.tag.dto.TagRequestDto;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +22,8 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
+    private final TagRepository tagRepository;
+    private final PostTagRepository postTagRepository;
 
 
     @Transactional
@@ -92,5 +100,27 @@ public class PostService {
     // DTO 활용
     public List<PostListWithCommentCountResponseDto> readPostWithCommentCountDto() {
         return postRepository.findAllWithCommentCountDTO();
+    }
+
+
+    // Create- PostTag
+    // Post와 Tag를 가지고 연결시켜주기
+    @Transactional
+    public void addTagToPost(Long id, TagRequestDto requestDto) {
+        // 게시글 찾음
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        // 태그를 찾음
+        Tag tag = tagRepository.findByName(requestDto.getName())
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        PostTag postTag = new PostTag();
+
+        // PostTag에 Post, Tag와의 연관관계 설정
+        postTag.addTag(tag);
+        postTag.addPost(post);
+
+        postTagRepository.save(postTag);
     }
 }

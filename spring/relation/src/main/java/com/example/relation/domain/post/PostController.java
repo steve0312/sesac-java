@@ -2,6 +2,7 @@ package com.example.relation.domain.post;
 
 import com.example.relation.*;
 import com.example.relation.domain.post.dto.*;
+import com.example.relation.domain.tag.dto.TagRequestDto;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
@@ -89,6 +90,13 @@ public class PostController {
                         postService.readPostWithCommentCountDto()
                 )
         );
+    }
+
+
+    // Create- PostTag
+    @PostMapping("/{id}/tags")
+    public void addTagToPost(@PathVariable Long id, @Valid @RequestBody TagRequestDto requestDto) {
+        postService.addTagToPost(id, requestDto);
     }
 }
 
