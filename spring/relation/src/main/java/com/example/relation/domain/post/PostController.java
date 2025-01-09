@@ -80,6 +80,16 @@ public class PostController {
                 )
         );
     }
+
+    // DTO 활용
+    @GetMapping("/comment-count-dto")
+    public ResponseEntity<ApiResponse<List<PostListWithCommentCountResponseDto>>> readPostWithCommentCountDto() {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostWithCommentCountDto()
+                )
+        );
+    }
 }
 
 

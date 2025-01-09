@@ -88,4 +88,9 @@ public class PostService {
                         })
                 .toList();
     }
+
+    // DTO 활용
+    public List<PostListWithCommentCountResponseDto> readPostWithCommentCountDto() {
+        return postRepository.findAllWithCommentCountDTO();
+    }
 }

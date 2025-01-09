@@ -1,5 +1,6 @@
 package com.example.relation.domain.post;
 
+import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -34,4 +35,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "GROUP BY p")
     // 지금 게시글과 댓글 갯수 반환하게 되므로 Object[] 사용
     List<Object[]> findAllWithCommentCount();
+
+    // DTO 활용
+    @Query("SELECT new com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto(p.id, p.title, p.createdAt, COUNT(c)) " +
+            "FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "GROUP BY p")
+    List<PostListWithCommentCountResponseDto> findAllWithCommentCountDTO();
 }
