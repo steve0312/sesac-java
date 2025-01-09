@@ -98,6 +98,17 @@ public class PostController {
     public void addTagToPost(@PathVariable Long id, @Valid @RequestBody TagRequestDto requestDto) {
         postService.addTagToPost(id, requestDto);
     }
+
+
+    // Read- 게시글을 댓글과 태그들과 함께 조회
+    @GetMapping("/{id}/detail")
+    public ResponseEntity<ApiResponse<PostWithCommentAndTagResponseDto>> readPostsByIdWithCommentAndTag(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsByIdWithCommentAndTag(id)
+                )
+        );
+    }
 }
 
 

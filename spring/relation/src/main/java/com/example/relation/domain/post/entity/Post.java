@@ -31,6 +31,9 @@ public class Post extends BaseTimeEntity {
     // 역참조
     private List<Comment> comments;
 
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+    private List<PostTag> postTags;
+
     @Builder
     public Post(String title, String content, String author) {
         this.title = title;

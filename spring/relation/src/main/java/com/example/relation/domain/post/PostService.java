@@ -121,6 +121,20 @@ public class PostService {
         postTag.addTag(tag);
         postTag.addPost(post);
 
+        // Post에 PostTag와의 연관관계 설정
+        // addPost 메서드의 post.getPostTags().add(this); 내용과 동일한 효과
+        post.getPostTags().add(postTag);
+
         postTagRepository.save(postTag);
+    }
+
+
+    // Read- 게시글을 댓글과 태그들과 함께 조회
+    public PostWithCommentAndTagResponseDto readPostsByIdWithCommentAndTag(Long id) {
+        // 댓글과 태그를 가진 게시글을 가져오자
+        Post post = postRepository.findByIdWithCommentAndTag(id)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        return PostWithCommentAndTagResponseDto.from(post);
     }
 }

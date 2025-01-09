@@ -33,6 +33,7 @@ public class PostTag {
     // PostTag에 Post를 넣어주기 위한 setter
     public void addPost(Post post) {
         this.post = post;
+//        post.getPostTags().add(this);
     }
 
     // PostTag에 Tag를 넣어주기 위한 setter
