@@ -145,4 +145,14 @@ public class PostService {
         // 하나의 ResponseDTO로 통합해서 반환
         return PostWithCommentAndTagResponseDto.from(postWithTag, comments);
     }
+
+
+    // Read- Batch size 조절
+    public PostWithCommentAndTagResponseDtoV2 readPostsByIdWithCommentAndTagV2(Long id) {
+        // 댓글과 태그를 가진 게시글을 가져오자
+        Post postWithTag = postRepository.findByIdWithCommentAndTag(id)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        return PostWithCommentAndTagResponseDtoV2.from(postWithTag);
+    }
 }

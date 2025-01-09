@@ -109,6 +109,18 @@ public class PostController {
                 )
         );
     }
+
+
+    // Read- Batch size 조절
+    @GetMapping("/{id}/detail/v2")
+    public ResponseEntity<ApiResponse<PostWithCommentAndTagResponseDtoV2>> readPostsByIdWithCommentAndTagV2(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsByIdWithCommentAndTagV2(id)
+                )
+        );
+    }
+
 }
 
 
