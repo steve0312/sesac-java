@@ -25,4 +25,13 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @EntityGraph(attributePaths = {"comments"})
     @Query("SELECT p FROM Post p")
     List<Post> findAllWithCommentEntityGraph();
+
+
+    // reacord
+    @Query("SELECT p, COUNT(c) " +
+            "FROM Post p " +
+            "LEFT JOIN p.comments c " +
+            "GROUP BY p")
+    // 지금 게시글과 댓글 갯수 반환하게 되므로 Object[] 사용
+    List<Object[]> findAllWithCommentCount();
 }

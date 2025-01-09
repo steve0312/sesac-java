@@ -67,4 +67,25 @@ public class PostService {
 
         postRepository.delete(post);
     }
+
+
+    // record
+    public List<PostListWithCommentCountResponseDto> readPostsWithCommentCount() {
+        List<Object[]> results = postRepository.findAllWithCommentCount();
+
+        return results.stream()
+                .map(
+                        result -> {
+                            Post post = (Post) result[0];
+                            Long commentCount = (Long) result[1];
+
+                            return new PostListWithCommentCountResponseDto(
+                                    post.getId(),
+                                    post.getTitle(),
+                                    post.getCreatedAt(),
+                                    commentCount
+                            );
+                        })
+                .toList();
+    }
 }

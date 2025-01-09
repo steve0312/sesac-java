@@ -70,6 +70,16 @@ public class PostController {
 
     }
 
+
+    // record
+    @GetMapping("/comment-count")
+    public ResponseEntity<ApiResponse<List<PostListWithCommentCountResponseDto>>> readPostsWithCommentCount() {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsWithCommentCount()
+                )
+        );
+    }
 }
 
 
