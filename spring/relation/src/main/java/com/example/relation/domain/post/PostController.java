@@ -1,9 +1,7 @@
 package com.example.relation.domain.post;
 
-import com.example.relation.*;
 import com.example.relation.domain.post.dto.*;
 import com.example.relation.domain.tag.dto.TagRequestDto;
-import com.example.relation.global.exception.ResourceNotFoundException;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -120,6 +118,27 @@ public class PostController {
                 )
         );
     }
+
+
+    // Tag별 게시글 가져오기
+    @GetMapping("/tags")
+    public ResponseEntity<ApiResponse<List<PostListResponseDto>>> readPostsByTag(@RequestParam String tag) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsByTag(tag)
+                )
+        );
+    }
+
+    // Tag별 게시글 가져오기- PostWithCommentAndTagResponseDtoV2 사용
+//    @GetMapping("/tags")
+//    public ResponseEntity<ApiResponse<List<PostWithCommentAndTagResponseDtoV2>>> readPostsByTag(@RequestParam String tag) {
+//        return ResponseEntity.ok(
+//                ApiResponse.ok(
+//                        postService.readPostsByTag(tag)
+//                )
+//        );
+//    }
 
 }
 

@@ -155,4 +155,21 @@ public class PostService {
 
         return PostWithCommentAndTagResponseDtoV2.from(postWithTag);
     }
+
+
+    // Tag별 게시글 가져오기
+    public List<PostListResponseDto> readPostsByTag(String tag) {
+        // 태그 이름에 맞는 게시글들을 가져옴
+        return postRepository.findAllByTagName(tag).stream()
+                .map(PostListResponseDto::from)
+                .toList();
+    }
+
+    // Tag별 게시글 가져오기- PostWithCommentAndTagResponseDtoV2 사용
+//    public List<PostWithCommentAndTagResponseDtoV2> readPostsByTag(String tag) {
+//        // 태그 이름에 맞는 게시글들을 가져옴
+//        return postRepository.findAllByTagName(tag).stream()
+//                .map(PostWithCommentAndTagResponseDtoV2::from)
+//                .toList();
+//    }
 }
