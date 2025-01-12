@@ -1,6 +1,6 @@
-package com.example.jpamini.springdatajpa.errors;
+package com.example.jpamini.springdatajpa.global.errors;
 
-import com.example.jpamini.springdatajpa.ApiResponse;
+import com.example.jpamini.springdatajpa.global.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

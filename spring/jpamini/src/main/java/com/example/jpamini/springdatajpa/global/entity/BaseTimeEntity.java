@@ -1,4 +1,4 @@
-package com.example.jpamini.springdatajpa;
+package com.example.jpamini.springdatajpa.global.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

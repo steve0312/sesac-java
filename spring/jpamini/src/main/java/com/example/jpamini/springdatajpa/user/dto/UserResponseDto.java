@@ -1,9 +1,8 @@
-package com.example.jpamini.springdatajpa.dto;
+package com.example.jpamini.springdatajpa.user.dto;
 
-import com.example.jpamini.springdatajpa.User;
+import com.example.jpamini.springdatajpa.user.User;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 

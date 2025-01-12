@@ -1,16 +1,12 @@
-package com.example.jpamini.springdatajpa;
+package com.example.jpamini.springdatajpa.user;
 
-import com.example.jpamini.springdatajpa.dto.UserUpdateRequestDto;
+import com.example.jpamini.springdatajpa.user.dto.UserUpdateRequestDto;
+import com.example.jpamini.springdatajpa.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Getter

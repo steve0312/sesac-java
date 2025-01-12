@@ -1,12 +1,12 @@
-package com.example.jpamini.springdatajpa;
+package com.example.jpamini.springdatajpa.user;
 
-import com.example.jpamini.springdatajpa.dto.UserCreateRequestDto;
-import com.example.jpamini.springdatajpa.dto.UserListResponseDto;
-import com.example.jpamini.springdatajpa.dto.UserResponseDto;
-import com.example.jpamini.springdatajpa.dto.UserUpdateRequestDto;
-import com.example.jpamini.springdatajpa.errors.DuplicationEmailException;
-import com.example.jpamini.springdatajpa.errors.DuplicationUserNameException;
-import com.example.jpamini.springdatajpa.errors.ResourceNotFoundException;
+import com.example.jpamini.springdatajpa.user.dto.UserCreateRequestDto;
+import com.example.jpamini.springdatajpa.user.dto.UserListResponseDto;
+import com.example.jpamini.springdatajpa.user.dto.UserResponseDto;
+import com.example.jpamini.springdatajpa.user.dto.UserUpdateRequestDto;
+import com.example.jpamini.springdatajpa.global.errors.DuplicationEmailException;
+import com.example.jpamini.springdatajpa.global.errors.DuplicationUserNameException;
+import com.example.jpamini.springdatajpa.global.errors.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

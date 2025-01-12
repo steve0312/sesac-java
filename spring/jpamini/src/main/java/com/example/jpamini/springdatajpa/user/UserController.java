@@ -1,9 +1,10 @@
-package com.example.jpamini.springdatajpa;
+package com.example.jpamini.springdatajpa.user;
 
-import com.example.jpamini.springdatajpa.dto.UserCreateRequestDto;
-import com.example.jpamini.springdatajpa.dto.UserListResponseDto;
-import com.example.jpamini.springdatajpa.dto.UserResponseDto;
-import com.example.jpamini.springdatajpa.dto.UserUpdateRequestDto;
+import com.example.jpamini.springdatajpa.user.dto.UserCreateRequestDto;
+import com.example.jpamini.springdatajpa.user.dto.UserListResponseDto;
+import com.example.jpamini.springdatajpa.user.dto.UserResponseDto;
+import com.example.jpamini.springdatajpa.user.dto.UserUpdateRequestDto;
+import com.example.jpamini.springdatajpa.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

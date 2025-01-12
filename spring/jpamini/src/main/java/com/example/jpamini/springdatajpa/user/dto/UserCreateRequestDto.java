@@ -1,7 +1,6 @@
-package com.example.jpamini.springdatajpa.dto;
+package com.example.jpamini.springdatajpa.user.dto;
 
-import com.example.jpamini.springdatajpa.User;
-import jakarta.persistence.Column;
+import com.example.jpamini.springdatajpa.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

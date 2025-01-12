@@ -1,4 +1,4 @@
-package com.example.jpamini.springdatajpa;
+package com.example.jpamini.springdatajpa.global.response;
 
 import lombok.Getter;
 
