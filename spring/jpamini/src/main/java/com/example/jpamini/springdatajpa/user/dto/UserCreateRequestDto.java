@@ -1,5 +1,6 @@
 package com.example.jpamini.springdatajpa.user.dto;
 
+import com.example.jpamini.springdatajpa.team.Team;
 import com.example.jpamini.springdatajpa.user.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -33,13 +34,14 @@ public class UserCreateRequestDto {
 
     // 유저를 생성할 때 save 메서드를 사용하려면 RequestDTO가 아닌 엔티티 데이터를 전달해야돼서 변환하기 위한 메서드
     // UserCreateRequestDto -> 엔티티
-    public User toEntity() {
+    public User toEntity(Team team) {
         return User.builder()
                 .userName(this.userName)
                 .email(this.email)
                 .nickName(this.nickName)
                 .age(this.age)
                 .isActive(this.isActive)
+                .team(team)
                 .build();
     }
 }

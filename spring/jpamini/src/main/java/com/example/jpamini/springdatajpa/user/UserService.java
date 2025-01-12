@@ -1,5 +1,7 @@
 package com.example.jpamini.springdatajpa.user;
 
+import com.example.jpamini.springdatajpa.team.Team;
+import com.example.jpamini.springdatajpa.team.TeamRepository;
 import com.example.jpamini.springdatajpa.user.dto.UserCreateRequestDto;
 import com.example.jpamini.springdatajpa.user.dto.UserListResponseDto;
 import com.example.jpamini.springdatajpa.user.dto.UserResponseDto;
@@ -18,10 +20,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final TeamRepository teamRepository;
 
     // Create
     @Transactional
-    public UserResponseDto createUser(UserCreateRequestDto requestDto) {
+    public UserResponseDto createUser(Long teamId, UserCreateRequestDto requestDto) {
         // 유저 이름은 중복 불가하므로 체크
         if(userRepository.existsByUserName(requestDto.getUserName())) {
             throw new DuplicationUserNameException();
@@ -32,8 +35,13 @@ public class UserService {
             throw new DuplicationEmailException();
         }
 
-        // 유저 생성
-        User user = userRepository.save(requestDto.toEntity());
+        // 팀 찾음
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(() -> new ResourceNotFoundException());
+
+        // 찾은 팀에 새로운 유저 생성
+        // User <- Team
+        User user = userRepository.save(requestDto.toEntity(team));
 
         return UserResponseDto.from(user);
     }

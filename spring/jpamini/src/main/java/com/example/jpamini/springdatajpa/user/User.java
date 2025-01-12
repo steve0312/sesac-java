@@ -32,12 +32,19 @@ public class User extends BaseTimeEntity {
     private Team team;
 
     @Builder
-    public User(String userName, String email, String nickName, Integer age, Boolean isActive) {
+    public User(String userName, String email, String nickName, Integer age, Boolean isActive, Team team) {
         this.userName = userName;
         this.email = email;
         this.nickName = nickName;
         this.age = age;
         this.isActive = true;
+        setTeam(team);
+    }
+
+    // 연관관계 편의 메서드 설정
+    public void setTeam(Team team) {
+        this.team = team;
+        team.getUsers().add(this);
     }
 
     // 유저에 대한 필드를 수정할 때 사용하는 메서드

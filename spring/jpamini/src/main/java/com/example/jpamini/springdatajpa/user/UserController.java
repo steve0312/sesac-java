@@ -14,21 +14,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/jpa/users")
+//@RequestMapping("/jpa/users")
+@RequestMapping("/teams/{teamId}/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
     // Create
     // POST method / url / data
+//    @PostMapping
+//    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@Valid @RequestBody UserCreateRequestDto requestDto) {
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .body(ApiResponse.ok(
+//                        "유저가 정상적으로 생성되었습니다.",
+//                        "CREATED",
+//                        userService.createUser(requestDto)
+//                ));
+//    }
     @PostMapping
-    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@Valid @RequestBody UserCreateRequestDto requestDto) {
+    public ResponseEntity<ApiResponse<UserResponseDto>> createUser(@PathVariable Long teamId, @Valid @RequestBody UserCreateRequestDto requestDto) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(ApiResponse.ok(
                         "유저가 정상적으로 생성되었습니다.",
                         "CREATED",
-                        userService.createUser(requestDto)
+                        userService.createUser(teamId, requestDto)
                 ));
     }
 

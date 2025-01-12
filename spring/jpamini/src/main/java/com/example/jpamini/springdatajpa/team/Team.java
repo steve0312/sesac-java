@@ -30,7 +30,7 @@ public class Team {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "team")
-    private List<User> user;
+    private List<User> users;
 
     @Builder
     public Team(String teamName, LocalDateTime createdAt) {
