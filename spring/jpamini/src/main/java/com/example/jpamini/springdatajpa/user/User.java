@@ -1,5 +1,6 @@
 package com.example.jpamini.springdatajpa.user;
 
+import com.example.jpamini.springdatajpa.team.Team;
 import com.example.jpamini.springdatajpa.user.dto.UserUpdateRequestDto;
 import com.example.jpamini.springdatajpa.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
@@ -25,6 +26,10 @@ public class User extends BaseTimeEntity {
     private Integer age;
     @Column(nullable = false)
     private Boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     @Builder
     public User(String userName, String email, String nickName, Integer age, Boolean isActive) {

@@ -26,7 +26,7 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(ApiResponse.ok(
-                        "게시글이 정상적으로 작성되었습니다.",
+                        "유저가 정상적으로 생성되었습니다.",
                         "CREATED",
                         userService.createUser(requestDto)
                 ));
@@ -115,7 +115,7 @@ public class UserController {
 
         return ResponseEntity.ok(
                 ApiResponse.ok(
-                        "게시글이 정상적으로 삭제되었습니다.",
+                        "유저가 정상적으로 삭제되었습니다.",
                         "DELETED",
                         null
                 )
