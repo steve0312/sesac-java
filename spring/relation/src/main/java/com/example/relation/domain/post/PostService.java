@@ -11,6 +11,7 @@ import com.example.relation.domain.tag.TagRepository;
 import com.example.relation.domain.tag.dto.TagRequestDto;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -172,4 +173,64 @@ public class PostService {
 //                .map(PostWithCommentAndTagResponseDtoV2::from)
 //                .toList();
 //    }
+
+
+//    // TagPost Create 개선
+//    // 기존 Create- PostTag 코드
+//    // Post와 Tag를 가지고 연결시켜주기
+//    @Transactional
+//    public void addTagToPost2(Long id, TagRequestDto requestDto) {
+//        // 게시글 찾음
+//        Post post = postRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException());
+//
+//        // 태그를 찾음
+////        Tag tag = tagRepository.findByName(requestDto.getName())
+////                .orElseThrow(() -> new ResourceNotFoundException());
+//
+//
+//        // 태그를 가져올건데 해당 태그가 없으면 만들고 있으면 꺼내오자
+//        // if(tagRepository.existsByTagName(name)) {
+//        // 있으면 꺼내오고
+//        // else {
+//        // 없으면 만들어라 }
+//
+//        Tag tag = tagRepository.findByName(requestDto.getName())
+//                .orElseGet(() -> {
+//                    // 태그가 이미 존재하면 존재하는 태그를 전달
+//                    // 없으면 태그를 새로 만들어
+//                    Tag newTag = new Tag(requestDto.getName());
+//                    // 저장해
+//                    return tagRepository.save(newTag);
+//                    // 위의 두 줄의 코드와 동일
+//                    // return tagRepository.save(requestDto.toEntity());
+//                });
+//
+//
+//        PostTag postTag = new PostTag();
+//
+//        // PostTag에 Post, Tag와의 연관관계 설정
+//        postTag.addTag(tag);
+//        postTag.addPost(post);
+//
+//        // Post에 PostTag와의 연관관계 설정
+//        // addPost 메서드의 post.getPostTags().add(this); 내용과 동일한 효과
+//        post.getPostTags().add(postTag);
+//
+//        postTagRepository.save(postTag);
+//    }
+
+
+    // Read- Paging
+    public List<PostListResponseDto> readPostsWithPage(Pageable pageable) {
+        // findAll 메서드 반환이 Pageable<Post>로 오므로 ResponseDTO로 변환해서 반환
+        return postRepository.findAll(pageable).getContent().stream()
+                .map(PostListResponseDto::from)
+                .toList();
+    }
+
+    // Read- paging 추가 정보
+    public PostListWithPageResponseDto readPostWithPageDetail(Pageable pageable) {
+        return PostListWithPageResponseDto.from(postRepository.findAll(pageable));
+    }
 }

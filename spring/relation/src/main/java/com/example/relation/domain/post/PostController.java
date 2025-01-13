@@ -5,6 +5,7 @@ import com.example.relation.domain.tag.dto.TagRequestDto;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -140,6 +141,27 @@ public class PostController {
 //        );
 //    }
 
+
+    // Read- Paging
+    @GetMapping("/pages")
+    public ResponseEntity<ApiResponse<List<PostListResponseDto>>> readPostsWithPage(Pageable pageable) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsWithPage(pageable)
+                )
+        );
+    }
+
+
+    // Read- paging 추가 정보
+    @GetMapping("/pages/detail")
+    public ResponseEntity<ApiResponse<PostListWithPageResponseDto>> readPostWithPageDetail(Pageable pageable) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostWithPageDetail(pageable)
+                )
+        );
+    }
 }
 
 
