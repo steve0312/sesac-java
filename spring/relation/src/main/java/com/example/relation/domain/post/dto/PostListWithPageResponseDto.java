@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -30,4 +31,23 @@ public class PostListWithPageResponseDto {
                 .hasPrevious(posts.hasPrevious())
                 .build();
     }
+
+    // PostListResponseDto를 이렇게 이너 클래스로도 활용할 수 있음
+//    @Getter
+//    @Builder
+//    static class PostListResponseDto {
+//        private Long id;
+//        private String title;
+//        private LocalDateTime createdAt;
+//        private LocalDateTime updatedAt;
+//
+//        public static PostListResponseDto from(Post entity){
+//            return PostListResponseDto.builder()
+//                    .id(entity.getId())
+//                    .title(entity.getTitle())
+//                    .createdAt(entity.getCreatedAt())
+//                    .updatedAt(entity.getUpdatedAt())
+//                    .build();
+//        }
+//    }
 }

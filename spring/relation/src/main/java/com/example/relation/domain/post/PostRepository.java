@@ -2,6 +2,8 @@ package com.example.relation.domain.post;
 
 import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
 import com.example.relation.domain.post.entity.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -47,10 +49,16 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     // 게시글을 댓글과 태그들과 함께 조회
     // Batch size를 통해 해결할 거라서 fetch 썼던 것을 지움
-    @Query("SELECT DISTINCT p FROM Post p " +
+//    @Query("SELECT DISTINCT p FROM Post p " +
+//            "LEFT JOIN p.comments c " +
+//            "LEFT JOIN FETCH p.postTags pt " +
+//            "LEFT JOIN FETCH pt.tag " +
+//            "WHERE p.id = :id")
+//    Optional<Post> findByIdWithCommentAndTag(@Param("id") Long id);
+    @Query("SELECT p FROM Post p " +
             "LEFT JOIN p.comments c " +
-            "LEFT JOIN FETCH p.postTags pt " +
-            "LEFT JOIN FETCH pt.tag " +
+            "LEFT JOIN p.postTags pt " +
+            "LEFT JOIN pt.tag " +
             "WHERE p.id = :id")
     Optional<Post> findByIdWithCommentAndTag(@Param("id") Long id);
 
@@ -69,4 +77,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             "JOIN pt.tag t " +
             "WHERE t.name = :tagName")
     List<Post> findAllByTagName(@Param("tagName") String tagName);
+
+
+    @Query("SELECT p FROM Post p " +
+            "LEFT JOIN FETCH p.comments")
+    Page<Post> findPostsWithCommentPage(Pageable pageable);
 }

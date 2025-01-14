@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -159,6 +160,28 @@ public class PostController {
         return ResponseEntity.ok(
                 ApiResponse.ok(
                         postService.readPostWithPageDetail(pageable)
+                )
+        );
+    }
+
+
+    // OneToMany에서의 paging
+    @GetMapping("/detail/pages")
+    public ResponseEntity<ApiResponse<List<PostWithCommentResponseDtoV2>>> readPostsWithCommentPage(Pageable pageable) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.readPostsWithCommentPage(pageable)
+                )
+        );
+    }
+
+
+    // image upload
+    @PostMapping("/images")
+    public ResponseEntity<ApiResponse<PostWithImageResponseDto>> createPostWithImage(@RequestPart(value="data") PostCreateRequestDto requestDto, @RequestPart(value="image", required = false)MultipartFile image) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.createPostWithImage(requestDto, image)
                 )
         );
     }

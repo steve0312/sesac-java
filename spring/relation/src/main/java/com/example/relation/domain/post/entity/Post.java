@@ -4,10 +4,7 @@ import com.example.relation.domain.comment.Comment;
 import com.example.relation.domain.post.dto.PostUpdateRequestDto;
 import com.example.relation.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -26,6 +23,10 @@ public class Post extends BaseTimeEntity {
     private String content;
 
     private String author;
+
+    @Setter
+    private String imageUrl;
+
 
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     // 역참조

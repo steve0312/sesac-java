@@ -9,11 +9,13 @@ import com.example.relation.domain.post.repository.PostTagRepository;
 import com.example.relation.domain.tag.Tag;
 import com.example.relation.domain.tag.TagRepository;
 import com.example.relation.domain.tag.dto.TagRequestDto;
+import com.example.relation.global.common.service.FileService;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class PostService {
     private final CommentRepository commentRepository;
     private final TagRepository tagRepository;
     private final PostTagRepository postTagRepository;
+    private final FileService fileServie;
 
 
     @Transactional
@@ -232,5 +235,28 @@ public class PostService {
     // Read- paging 추가 정보
     public PostListWithPageResponseDto readPostWithPageDetail(Pageable pageable) {
         return PostListWithPageResponseDto.from(postRepository.findAll(pageable));
+    }
+
+
+    public List<PostWithCommentResponseDtoV2> readPostsWithCommentPage(Pageable pageable) {
+        return postRepository.findPostsWithCommentPage(pageable).getContent().stream()
+                .map(PostWithCommentResponseDtoV2::from)
+                .toList();
+    }
+
+
+    // image upload
+    @Transactional
+    public PostWithImageResponseDto createPostWithImage(PostCreateRequestDto requestDto, MultipartFile image) {
+        String imageUrl = null;
+
+        if(image != null && !image.isEmpty()) {
+            imageUrl = fileServie.saveFile(image);
+        }
+
+        Post post = requestDto.toEntity();
+        post.setImageUrl(imageUrl);
+
+        return PostWithImageResponseDto.from(postRepository.save(post));
     }
 }
