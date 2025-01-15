@@ -1,7 +1,9 @@
 package com.example.relation.domain.user.controller;
 
-import com.example.relation.domain.user.dto.SignupResponseDto;
+import com.example.relation.domain.user.dto.request.LoginRequestDto;
+import com.example.relation.domain.user.dto.response.SignupResponseDto;
 import com.example.relation.domain.user.dto.request.SignupRequestDto;
+import com.example.relation.domain.user.dto.response.TokenResponseDto;
 import com.example.relation.domain.user.service.AuthService;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
@@ -30,5 +32,16 @@ public class AuthController {
                                 authService.signup(requestDto)
                         )
                 );
+    }
+
+    // 로그인
+    // ID, PW를 받아다가 만들거라서 RequestDTO가 필요함. RequestDTO는 @PostMapping을 사용함
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse<TokenResponseDto>> login(@Valid @RequestBody LoginRequestDto requestDto) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        authService.login(requestDto)
+                )
+        );
     }
 }
