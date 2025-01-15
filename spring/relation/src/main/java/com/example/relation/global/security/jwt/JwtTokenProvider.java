@@ -1,6 +1,7 @@
 package com.example.relation.global.security.jwt;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -52,5 +53,31 @@ public class JwtTokenProvider {
                 // 서명 넣기
                 .signWith(Keys.hmacShaKeyFor(secretKey.getBytes()), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            // JWT 토큰을 파싱하고 검증
+            Jwts.parserBuilder()
+                    // 검증에 사용할 secret key 설정
+                    .setSigningKey(Keys.hmacShaKeyFor(secretKey.getBytes()))
+                    .build()
+                    // 서명이랑 secret key를 비교
+                    .parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    public String getUsername(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(Keys.hmacShaKeyFor(secretKey.getBytes()))
+                .build()
+                .parseClaimsJws(token)
+                // 서명이랑 secret key를 비교했을 때 일치하면 클레임 추출
+                .getBody()
+                // username을 받아옴
+                .getSubject();
     }
 }
