@@ -2,12 +2,14 @@ package com.example.relation.domain.post;
 
 import com.example.relation.domain.post.dto.*;
 import com.example.relation.domain.tag.dto.TagRequestDto;
+import com.example.relation.domain.user.entity.User;
 import com.example.relation.global.response.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -182,6 +184,17 @@ public class PostController {
         return ResponseEntity.ok(
                 ApiResponse.ok(
                         postService.createPostWithImage(requestDto, image)
+                )
+        );
+    }
+
+
+    // Post에 작성자 추가
+    @PostMapping("/post2")
+    public ResponseEntity<ApiResponse<Post2ResponseDto>> createPost2(@RequestBody Post2CreateWithAuthorRequestDto requestDto, @AuthenticationPrincipal User user) {
+        return ResponseEntity.ok(
+                ApiResponse.ok(
+                        postService.createPost2(requestDto, user)
                 )
         );
     }
