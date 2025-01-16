@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
 
+    // 로그인한 유저 정보 확인하기
     public UserResponseDto getMyProfile(User user) {
         // userRepository 생략 가능
         // JWT 파싱할 때 UserDetails를 통해 데이터를 가져오기 때문에 (JwtAuthenticationFilter에서 4번에 해당)

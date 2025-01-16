@@ -7,6 +7,7 @@ import com.example.relation.global.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
+    // 로그인한 유저 정보 확인하기
     @GetMapping("/my/profile")
     public ResponseEntity<ApiResponse<UserResponseDto>> getMyProfile() {
         // SecurityContext에서 인증된 객체 꺼내오기
@@ -29,5 +31,17 @@ public class UserController {
                         userService.getMyProfile(user)
                 )
         );
+    }
+
+
+    // @AuthenticationPrincipal
+    // 를 통해 인증 객체를 불러오고 그 인증 객체에 맞는 user data를 불러오는 코드를 한 줄로 표현 가능
+    @GetMapping("/my/profile2")
+    public ResponseEntity<ApiResponse<UserResponseDto>> getMyProfile2(
+            @AuthenticationPrincipal User user
+    ){
+        return ResponseEntity.ok(ApiResponse.ok(
+                userService.getMyProfile(user)
+        ));
     }
 }
