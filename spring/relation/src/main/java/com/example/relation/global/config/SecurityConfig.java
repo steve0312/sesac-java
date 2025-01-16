@@ -1,11 +1,13 @@
 package com.example.relation.global.config;
 
+import com.example.relation.global.security.SecurityPathConfig;
 import com.example.relation.global.security.handler.CustomAccessDeniedHandler;
 import com.example.relation.global.security.handler.JwtAuthenticationEntryPoint;
 import com.example.relation.global.security.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -40,7 +42,9 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/auth/**", "/error", "/images/**").permitAll()
+                        // SecurityPathConfig.PUBLIC_GET_URLS 에 들어있는 url의 경우, GET 요청이면 인증하지 않아도 접근 허용
+                        .requestMatchers(HttpMethod.GET, SecurityPathConfig.PUBLIC_GET_URLS).permitAll()
                         .anyRequest().authenticated()
                 )
                 // UsernamePasswordAuthenticationFilter 이전에 jwtAuthenticationFilter 를 처리
