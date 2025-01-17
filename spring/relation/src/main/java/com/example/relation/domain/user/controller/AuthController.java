@@ -10,10 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -44,4 +41,10 @@ public class AuthController {
                 )
         );
     }
+
+
+    // 만료된 토큰에 대한 처리 (Spring + React 강의자료)
+    // 단순히 JWT 검증을 위한 endpoint
+    @GetMapping("/verify")
+    public void verify() {}
 }

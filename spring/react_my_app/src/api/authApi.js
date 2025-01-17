@@ -1,6 +1,6 @@
-import api from "./axios";
+import api from './axios';
 
-const ENDPOINT = "/auth";
+const ENDPOINT = '/auth';
 const authApi = {
   // 회원가입
   signup: async (formData) => {
@@ -11,6 +11,12 @@ const authApi = {
   // 로그인
   login: async (formData) => {
     const response = await api.post(`${ENDPOINT}/login`, formData);
+    return response;
+  },
+
+  // jwt 검사
+  verify: async () => {
+    const response = await api.get(`${ENDPOINT}/verify`);
     return response;
   },
 };
