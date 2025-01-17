@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import postApi from "../api/postsApi";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from 'react-router-dom';
+import postApi from '../api/postsApi';
 
 export default function PostCreate() {
   const navigate = useNavigate();
 
   const { isLoggedIn } = useSelector((state) => state.auth);
-  const [formData, setFormData] = useState({ title: "", content: "" });
-  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({ title: '', content: '' });
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate("/");
+      navigate('/');
     }
   }, [isLoggedIn]);
 
@@ -27,11 +27,14 @@ export default function PostCreate() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setError("");
+    setError('');
 
     async function createPost() {
       try {
-        // 게시글 생성 로직
+        const response = await postApi.createPost(formData);
+        const data = response.data;
+        const id = data.data.id;
+        navigate(`/posts/${id}`);
       } catch (err) {
         console.log(err);
       }
