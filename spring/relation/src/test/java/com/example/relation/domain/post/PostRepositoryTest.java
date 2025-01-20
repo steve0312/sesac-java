@@ -2,6 +2,7 @@ package com.example.relation.domain.post;
 
 import com.example.relation.domain.comment.Comment;
 import com.example.relation.domain.comment.CommentRepository;
+import com.example.relation.domain.post.dto.PostListWithCommentCountResponseDto;
 import com.example.relation.domain.post.entity.Post;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,5 +61,33 @@ class PostRepositoryTest {
 
         // 3. post에 대한 comment 중 첫 번째의 content가 "댓글1"이다.
         Assertions.assertThat(foundPost.get().getComments().getFirst().getContent()).isEqualTo("댓글1");
+    }
+
+    @Test
+    void findAllWithCommentCountDTO_성공() {
+        // when
+        List<PostListWithCommentCountResponseDto> results = postRepository.findAllWithCommentCountDTO();
+
+        // List에 post가 하나 들어있는지 검증
+        Assertions.assertThat(results).hasSize(1);
+
+        // 거기에 들어있는 post의 결과값에 postId가 들어있는지 검증
+        Assertions.assertThat(results.getFirst().id()).isEqualTo(post.getId());
+
+        // Post의 commentCount에는 2가 들어있는지 검증
+        Assertions.assertThat(results.getFirst().commentCount()).isEqualTo(2L);
+    }
+
+    @Test
+    void findAllByTagName_없는_태그_검색() {
+        // given
+        String notExistTag = "존재하지 않는 태그";
+
+        // when
+        List<Post> posts = postRepository.findAllByTagName(notExistTag);
+
+        // then
+        // notExistTag 가 존재하는지 검증
+        Assertions.assertThat(posts).isEmpty();
     }
 }
