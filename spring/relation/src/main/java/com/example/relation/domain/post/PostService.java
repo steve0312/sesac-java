@@ -14,6 +14,7 @@ import com.example.relation.domain.user.entity.User;
 import com.example.relation.global.common.service.FileService;
 import com.example.relation.global.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -40,6 +42,7 @@ public class PostService {
     }
 
     public List<PostListResponseDto> readPosts(){
+        log.info("read posts");
         return postRepository.findAll().stream()
                 .map(PostListResponseDto::from)
                 .toList();
@@ -48,6 +51,7 @@ public class PostService {
     // 방식 1
     // 게시글에 정보 따로, 해당 게시글에 대한 댓글 목록을 따로 만들어 Dto로 합쳐 전달
     public PostWithCommentResponseDto readPostById(Long id){
+        log.info("read posts : {}", id);
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException());
 
         // 특정 post id를 가지고 있는 commets를 가져오고 싶다.
