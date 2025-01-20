@@ -13,9 +13,11 @@ import com.example.relation.domain.user.dto.request.SignupRequestDto;
 import com.example.relation.domain.user.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Profile("!test")
 @Component
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
