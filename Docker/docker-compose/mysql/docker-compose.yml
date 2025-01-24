@@ -1,0 +1,16 @@
+# mysql/docker-compose.yml
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    ports:
+      - '3307:3306'
+    # 환경 변수 주입
+    # run -e MYSQL_ROOT_PASSWORD=비밀번호
+    env_file:
+      - .env
+    # environment:
+    #   key: value
+    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    #   MYSQL_DATABASE: ${MYSQL_DATABASE}

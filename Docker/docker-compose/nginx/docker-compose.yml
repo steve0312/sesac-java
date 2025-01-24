@@ -1,0 +1,13 @@
+# nginx/docker-compose.yml
+# docker-compose 문법 버전
+version: "3.8"
+
+# 컨테이너(서비스) 블록들의 최상위 블록
+services:
+  # docker compose 에서만 사용할 이름 
+  nginx:
+    # 어떤 이미지를 기반으로 컨테이너를 생성할건지 명시
+    image: nginx:stable
+    ports:
+      - "80:80"
+
